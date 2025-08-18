@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
-        scaffoldBackgroundColor: const Color(0xff2F2F2F)
+        scaffoldBackgroundColor: const Color(0xff2F2F2F),
+        bottomSheetTheme: const BottomSheetThemeData(
+          backgroundColor: Color(0xff2F2F2F)
+        )
       ),
       home: const NotesScreen(),
     );
