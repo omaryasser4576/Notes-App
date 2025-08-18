@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/screens/notes_screen.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kNotesBox);
   runApp(const MyApp());
 }
 
@@ -18,11 +22,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         scaffoldBackgroundColor: const Color(0xff2F2F2F),
         bottomSheetTheme: const BottomSheetThemeData(
-          backgroundColor: Color(0xff2F2F2F)
-        )
+          backgroundColor: Color(0xff2F2F2F),
+        ),
       ),
       home: const NotesScreen(),
     );
   }
 }
-
