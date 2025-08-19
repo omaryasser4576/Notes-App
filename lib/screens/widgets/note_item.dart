@@ -21,7 +21,7 @@ class NoteItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 6),
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 24),
         decoration: BoxDecoration(
-          color: Colors.amber,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -29,9 +29,9 @@ class NoteItem extends StatelessWidget {
           children: [
             ListTile(
               contentPadding: const EdgeInsets.only(right: 12.0),
-              title: const Text(
-                'Flutter tips',
-                style: TextStyle(
+              title:  Text(
+                note.title,
+                style: const TextStyle(
                   fontSize: 24,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Text(
-                  'Build your carrer with Tharwat Samy',
+                  note.subTitle,
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black.withValues(alpha: 0.5),
@@ -59,7 +59,7 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24, top: 16),
               child: Text(
-                'JUl 23.2006',
+                note.date,
                 style: TextStyle(color: Colors.black.withValues(alpha: 0.5)),
               ),
             ),
