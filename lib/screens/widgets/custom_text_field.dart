@@ -17,10 +17,11 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        if (value?.isEmpty ?? true) {
+        if (value == null || value.isEmpty) { //value?.isEmpty ?? true
           return 'This field is required';
+        }else {
+          return null;
         }
-        return null;
       },
       onSaved: onSave,
       maxLines: maxLines,
