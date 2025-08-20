@@ -1,9 +1,11 @@
+import 'package:cherry_toast_msgs/cherry_toast_msgs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/note_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/screens/widgets/custom_app_bar.dart';
 import 'package:notes_app/screens/widgets/custom_text_field.dart';
+import 'package:notes_app/screens/widgets/edit_colors_list_view.dart';
 
 class EditNoteScreenBody extends StatefulWidget {
   const EditNoteScreenBody({super.key, required this.note});
@@ -39,10 +41,16 @@ class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
                 icon: Icons.check,
                 showBackArrow: true,
                 onPressed: () {
-                    widget.note.title = title ?? widget.note.title;
-                    widget.note.subTitle = content ?? widget.note.subTitle;
-                    widget.note.save();
-                    BlocProvider.of<NotesCubit>(context).fetchNotes();
+                  widget.note.title = title ?? widget.note.title;
+                  widget.note.subTitle = content ?? widget.note.subTitle;
+                  widget.note.save();
+                  BlocProvider.of<NotesCubit>(context).fetchNotes();
+                  CherryToastMsgs.showSuccessToast(
+                    height: 120,
+                    context: context,
+                    title: 'Success!',
+                    description: 'Note has been edited sccessfully.',
+                  );
                 },
               ),
 
@@ -63,6 +71,9 @@ class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
                   content = value;
                 },
               ),
+
+              const SizedBox(height: 32),
+              EditColorsListView(note: widget.note),
             ],
           ),
         ),
